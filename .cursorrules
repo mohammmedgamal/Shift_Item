@@ -1,0 +1,24 @@
+# Deployment & Git Rules for Ghazlan Shift Duties
+
+## Repository Information
+- **Main Repository**: https://github.com/mohammmedgamal/Shift_Item.git
+- **Main Branch**: `main`
+
+## Git Workflow
+When asked to "deploy", "push", or "update GitHub", always follow these steps:
+1. **Check Status**: Run `git status` to see what has changed.
+2. **Add Changes**: Run `git add .` (respecting `.gitignore`).
+3. **Commit**: Use a descriptive commit message that summarizes the changes.
+   - Format: `feat: ...`, `fix: ...`, `docs: ...`, `refactor: ...`
+4. **Push**: Run `git push origin main`.
+
+## Project Structure
+- `client/`: React frontend (Vite)
+- `server/`: Node.js/Express backend
+- `database.sqlite`: **NEVER** push this file (managed by .gitignore).
+
+## Deployment Reminders
+- Ensure the backend server is NOT running when attempting major Git operations if it locks files (though SQLite is usually the only concern).
+- Always verify that the build passes before pushing (if a build script exists).
+- If new environment variables are added, mention them but do not push `.env` files.
+
