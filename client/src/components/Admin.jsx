@@ -75,7 +75,7 @@ const Admin = () => {
               <option value="Night">Night</option>
               <option value="Both">Both</option>
             </select>
-            <button type="submit" className="w-full bg-sec-blue text-white py-2 rounded-lg hover:bg-sec-lightBlue transition-colors">
+            <button type="submit" className="w-full bg-sec-orange text-white py-2 rounded-lg hover:bg-sec-orange/80 transition-colors">
               Add Duty
             </button>
           </form>

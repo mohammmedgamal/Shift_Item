@@ -38,7 +38,7 @@ const Navbar = ({ activeTab, setActiveTab }) => {
                     key={item.id}
                     onClick={() => setActiveTab(item.id)}
                     className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                      activeTab === item.id ? 'bg-sec-lightBlue text-white' : 'hover:bg-sec-lightBlue/50'
+                      activeTab === item.id ? 'bg-sec-orange text-white shadow-md' : 'hover:bg-sec-orange/50'
                     }`}
                   >
                     {item.label}
@@ -50,12 +50,12 @@ const Navbar = ({ activeTab, setActiveTab }) => {
           <div className="flex items-center gap-4">
             <button 
               onClick={toggleLanguage}
-              className="flex items-center gap-2 hover:bg-sec-lightBlue px-3 py-2 rounded-md transition-colors"
+              className="flex items-center gap-2 hover:bg-sec-orange px-3 py-2 rounded-md transition-colors"
             >
               <Globe className="w-5 h-5" />
               <span>{i18n.language === 'en' ? 'العربية' : 'English'}</span>
             </button>
-            <div className="bg-sec-lightBlue/30 p-2 rounded-full cursor-pointer hover:bg-sec-lightBlue transition-colors">
+            <div className="bg-sec-orange/30 p-2 rounded-full cursor-pointer hover:bg-sec-orange transition-colors">
               <User className="w-6 h-6" />
             </div>
           </div>

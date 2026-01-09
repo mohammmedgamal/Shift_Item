@@ -47,9 +47,9 @@ function App() {
             <a href="#" className="hover:text-sec-lightBlue transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-sec-lightBlue transition-colors">Internal Portal</a>
           </div>
-        </div>
+      </div>
       </footer>
-    </div>
+      </div>
   );
 }
 

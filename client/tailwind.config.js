@@ -10,6 +10,7 @@ export default {
         sec: {
           blue: '#005596',
           lightBlue: '#00A3E0',
+          orange: '#FF8C00',
           white: '#FFFFFF',
           gray: '#F3F4F6',
         }

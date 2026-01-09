@@ -78,7 +78,7 @@ const Dashboard = () => {
             <span className="bg-sec-blue/10 text-sec-blue px-3 py-1 rounded-full font-semibold">
               {t('shift_group')}: {currentShift.group}
             </span>
-            <span className="bg-sec-lightBlue/10 text-sec-lightBlue px-3 py-1 rounded-full font-semibold">
+            <span className="bg-sec-orange/10 text-sec-orange px-3 py-1 rounded-full font-semibold">
               {t('shift_type')}: {t(currentShift.type.toLowerCase())}
             </span>
             <span className="text-gray-500">{currentShift.date}</span>
@@ -103,7 +103,7 @@ const Dashboard = () => {
             onClick={() => setActiveTab(tab)}
             className={`px-6 py-2 rounded-xl font-medium transition-all ${
               activeTab === tab 
-                ? 'bg-sec-blue text-white shadow-md transform scale-105' 
+                ? 'bg-sec-orange text-white shadow-md transform scale-105' 
                 : 'bg-white text-gray-500 hover:bg-sec-gray'
             }`}
           >
