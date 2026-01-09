@@ -83,23 +83,63 @@ async function seed() {
   db.run(`INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)`, ['rotation_reference_shift', 'A']);
 
   // Users Seeding
-  const insertUser = db.prepare(`INSERT OR IGNORE INTO users (name, username, password, role) VALUES (?, ?, ?, ?)`);
+  db.run(`DELETE FROM users`);
+  const insertUser = db.prepare(`INSERT INTO users (name, username, password, role) VALUES (?, ?, ?, ?)`);
   
   // The special admin requested by user
-  insertUser.run('Admin Manager', 'admin', '23', 'admin');
+  insertUser.run('Admin Manager', 'admin', '111', 'admin');
 
   const operatorUsers = [
     { name: 'Yazeed Hazzazy', username: '86758', password: '123' },
-    { name: 'ABDULMOHSIN MOHAMMED', username: '86995', password: '123' },
-    { name: 'DHAFER MOHAMMED', username: '89034', password: '123' },
-    { name: 'AYED MOHAMMED', username: '96800', password: '123' },
-    { name: 'RASHED HAMOUD', username: '96871', password: '123' },
-    { name: 'KHALID MOHAMMED', username: '96952', password: '123' },
-    { name: 'TURKI YOUSEF', username: '81116', password: '123' },
-    { name: 'ABDULRAHMAN HAMAD', username: '81132', password: '123' },
-    { name: 'JASEM ALI', username: '89024', password: '123' },
-    { name: 'NASSER ALAWI', username: '89065', password: '123' },
-    { name: 'FALEH SALEM', username: '100941', password: '123' }
+    { name: 'ABDULMOHSIN ALQARNI', username: '86995', password: '123' },
+    { name: 'DHAFER ALBREAK', username: '89034', password: '123' },
+    { name: 'AYED MOHAMMED ALHAJRI', username: '96800', password: '123' },
+    { name: 'RASHED ALKHALDI', username: '96871', password: '123' },
+    { name: 'KHALID ALQARNI', username: '96952', password: '123' },
+    { name: 'TURKI ALBUNAYAN', username: '81116', password: '123' },
+    { name: 'ABDULRAHMAN ALKHALDI', username: '81132', password: '123' },
+    { name: 'JASEM ALMARZOOK', username: '89024', password: '123' },
+    { name: 'NASSER ALSAYEDNASSER', username: '89065', password: '123' },
+    { name: 'FALEH ALHAJRI', username: '100941', password: '123' },
+    { name: 'MOHAMED ABDELALIM', username: '119509', password: '123' },
+    { name: 'MAHMOUD FARAMAWY', username: '119539', password: '123' },
+    { name: 'JASIM ALMARHOON', username: '119554', password: '123' },
+    { name: 'Nazier Al-Zaki', username: '49123', password: '123' },
+    { name: 'MOHAMMED ALMARSHAD', username: '69727', password: '123' },
+    { name: 'SULTAN AL HAMMADI', username: '81108', password: '123' },
+    { name: 'ALI ALFAIFI', username: '81143', password: '123' },
+    { name: 'IBRAHIM ALGHAMDI', username: '81413', password: '123' },
+    { name: 'WALID RASHAD', username: '119393', password: '123' },
+    { name: 'MOHAMED GAMAL', username: '119467', password: '123' },
+    { name: 'WAEL ELFAWAL', username: '119502', password: '123' },
+    { name: 'AMR AGAMI', username: '119503', password: '123' },
+    { name: 'OSAMA ELSHARNOBY', username: '119508', password: '123' },
+    { name: 'AHMED ALDAWOOD', username: '58140', password: '123' },
+    { name: 'MAJED ALADI', username: '61990', password: '123' },
+    { name: 'HUSSAIN AL TALEB', username: '70907', password: '123' },
+    { name: 'HUSSAIN ALMUALLIM', username: '70926', password: '123' },
+    { name: 'SAIED MUBARKA', username: '121485', password: '123' },
+    { name: 'MOHAMAD YAHIA', username: '121911', password: '123' },
+    { name: 'MAHMOUD FOUAD', username: '122076', password: '123' },
+    { name: 'SAEED AL KHALAF', username: '51088', password: '123' },
+    { name: 'ABDULLAH ALNASSER', username: '60580', password: '123' },
+    { name: 'ABDULRAHMAN ALSAID', username: '76718', password: '123' },
+    { name: 'MAMDOUH, A', username: '121483', password: '123' },
+    { name: 'HESHAM NAGY', username: '121487', password: '123' },
+    { name: 'MOHAMED NASR', username: '121584', password: '123' },
+    { name: 'ELSHERBINY, M', username: '121603', password: '123' },
+    { name: 'HOSSAMELDIN', username: '121706', password: '123' },
+    { name: 'ESLAM HASHESH', username: '121840', password: '123' },
+    { name: 'RABEA HENDAWY', username: '121842', password: '123' },
+    { name: 'MAHMOUD SAMY', username: '121845', password: '123' },
+    { name: 'MOHAMED YOUSF', username: '121877', password: '123' },
+    { name: 'ABDELLATIF HADI', username: '121878', password: '123' },
+    { name: 'Adel Al-Kadhem', username: '51105', password: '123' },
+    { name: 'HASSAN ALAMRI', username: '55901', password: '123' },
+    { name: 'ABDULGHAFAR ALDOSHAN', username: '55938', password: '123' },
+    { name: 'Ahmad Rabie', username: '81067', password: '123' },
+    { name: 'MOHAMED SALEH', username: '82270', password: '123' },
+    { name: 'Fareed Al Mohri', username: '101182', password: '123' }
   ];
 
   operatorUsers.forEach(u => {
