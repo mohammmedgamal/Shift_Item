@@ -126,11 +126,11 @@ const Dashboard = () => {
             <div key={task.id} className="bg-white p-6 rounded-2xl shadow-sm border hover:shadow-md transition-shadow">
               <div className="flex flex-col md:flex-row justify-between gap-4">
                 <div className="flex-1">
-                  <h4 className="text-lg font-bold text-gray-800">
+                  <h4 className="text-lg font-bold text-gray-900">
                     {i18n.language === 'ar' ? task.title_ar : task.title_en}
                   </h4>
                   {task.description_en && (
-                    <p className="text-gray-500 text-sm mt-1">
+                    <p className="text-gray-600 text-sm mt-1">
                       {i18n.language === 'ar' ? task.description_ar : task.description_en}
                     </p>
                   )}

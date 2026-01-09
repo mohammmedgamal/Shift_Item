@@ -42,23 +42,23 @@ const Admin = () => {
             <Plus className="w-5 h-5 text-sec-blue" />
             Add New Duty
           </h3>
-          <form onSubmit={handleAdd} className="space-y-4">
+          <form onSubmit={handleAdd} className="space-y-4 text-gray-800">
             <input 
               required
               placeholder="English Title" 
-              className="w-full border p-2 rounded-lg"
+              className="w-full border p-2 rounded-lg bg-white"
               value={newDuty.title_en}
               onChange={e => setNewDuty({...newDuty, title_en: e.target.value})}
             />
             <input 
               required
               placeholder="Arabic Title" 
-              className="w-full border p-2 rounded-lg text-right"
+              className="w-full border p-2 rounded-lg text-right bg-white"
               value={newDuty.title_ar}
               onChange={e => setNewDuty({...newDuty, title_ar: e.target.value})}
             />
             <select 
-              className="w-full border p-2 rounded-lg"
+              className="w-full border p-2 rounded-lg bg-white"
               value={newDuty.frequency}
               onChange={e => setNewDuty({...newDuty, frequency: e.target.value})}
             >
@@ -67,7 +67,7 @@ const Admin = () => {
               <option value="monthly">Monthly</option>
             </select>
             <select 
-              className="w-full border p-2 rounded-lg"
+              className="w-full border p-2 rounded-lg bg-white"
               value={newDuty.shift_type}
               onChange={e => setNewDuty({...newDuty, shift_type: e.target.value})}
             >
@@ -86,7 +86,7 @@ const Admin = () => {
           {duties.map(duty => (
             <div key={duty.id} className="bg-white p-4 rounded-xl shadow-sm border flex justify-between items-center">
               <div>
-                <h4 className="font-bold">{duty.title_en}</h4>
+                <h4 className="font-bold text-gray-800">{duty.title_en}</h4>
                 <p className="text-gray-500 text-sm">{duty.frequency} - {duty.shift_type}</p>
               </div>
               <button 
