@@ -11,7 +11,7 @@ const Home = ({ settings }) => {
       <section className="relative h-[500px] overflow-hidden rounded-2xl mx-4 mt-6">
         <div className="absolute inset-0 bg-gradient-to-r from-sec-blue/80 to-transparent z-10" />
         <img 
-          src="https://www.se.com.sa/MediaHandler.ashx?id=7929" 
+          src="/ghazlan-hero.jpg" 
           alt="Ghazlan Power Station" 
           className="w-full h-full object-cover"
         />

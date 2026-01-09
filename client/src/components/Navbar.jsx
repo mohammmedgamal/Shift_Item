@@ -28,8 +28,8 @@ const Navbar = ({ activeTab, setActiveTab }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center gap-4">
-            <div className="flex-shrink-0 bg-white p-2 rounded">
-               <div className="text-sec-blue font-bold text-xl">SEC</div>
+            <div className="flex-shrink-0 bg-white p-1 rounded">
+               <img src="/sec-logo.png" alt="SEC Logo" className="h-10 w-auto" />
             </div>
             <div className="hidden md:block">
               <div className={`flex items-baseline space-x-4 ${isRtl ? 'space-x-reverse' : ''}`}>
