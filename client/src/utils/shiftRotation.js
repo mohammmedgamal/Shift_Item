@@ -4,12 +4,14 @@
  */
 
 const GROUPS = ['A', 'B', 'C', 'D'];
-const REFERENCE_DATE = new Date('2024-01-01'); // Fixed start date
+const REFERENCE_DATE = new Date('2025-01-15'); // Reference start date
 
 export const getCurrentShift = (date = new Date()) => {
-  const diffTime = Math.abs(date - REFERENCE_DATE);
+  const diffTime = date - REFERENCE_DATE;
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-  const cycleDay = diffDays % 8;
+  
+  // Handle dates before reference if necessary (positive modulo)
+  const cycleDay = ((diffDays % 16) + 16) % 16;
   
   const hour = date.getHours();
   const isNight = hour >= 19 || hour < 7;
@@ -18,20 +20,22 @@ export const getCurrentShift = (date = new Date()) => {
   let morningGroup = '';
   let nightGroup = '';
 
-  // Cycle definition (8 days)
-  // Day 0-1: A-M, C-N
-  // Day 2-3: B-M, D-N
-  // Day 4-5: C-M, A-N
-  // Day 6-7: D-M, B-N
+  /**
+   * 16-day cycle pattern:
+   * Days 0-3: A-M, B-N
+   * Days 4-7: D-M, C-N
+   * Days 8-11: B-M, A-N
+   * Days 12-15: C-M, D-N
+   */
 
-  if (cycleDay < 2) {
-    morningGroup = 'A'; nightGroup = 'C';
-  } else if (cycleDay < 4) {
-    morningGroup = 'B'; nightGroup = 'D';
-  } else if (cycleDay < 6) {
-    morningGroup = 'C'; nightGroup = 'A';
+  if (cycleDay < 4) {
+    morningGroup = 'A'; nightGroup = 'B';
+  } else if (cycleDay < 8) {
+    morningGroup = 'D'; nightGroup = 'C';
+  } else if (cycleDay < 12) {
+    morningGroup = 'B'; nightGroup = 'A';
   } else {
-    morningGroup = 'D'; nightGroup = 'B';
+    morningGroup = 'C'; nightGroup = 'D';
   }
 
   return {
@@ -43,21 +47,21 @@ export const getCurrentShift = (date = new Date()) => {
 
 export const getShiftForDate = (dateString, shiftType) => {
   const date = new Date(dateString);
-  const diffTime = Math.abs(date - REFERENCE_DATE);
+  const diffTime = date - REFERENCE_DATE;
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-  const cycleDay = diffDays % 8;
+  const cycleDay = ((diffDays % 16) + 16) % 16;
 
   let morningGroup = '';
   let nightGroup = '';
 
-  if (cycleDay < 2) {
-    morningGroup = 'A'; nightGroup = 'C';
-  } else if (cycleDay < 4) {
-    morningGroup = 'B'; nightGroup = 'D';
-  } else if (cycleDay < 6) {
-    morningGroup = 'C'; nightGroup = 'A';
+  if (cycleDay < 4) {
+    morningGroup = 'A'; nightGroup = 'B';
+  } else if (cycleDay < 8) {
+    morningGroup = 'D'; nightGroup = 'C';
+  } else if (cycleDay < 12) {
+    morningGroup = 'B'; nightGroup = 'A';
   } else {
-    morningGroup = 'D'; nightGroup = 'B';
+    morningGroup = 'C'; nightGroup = 'D';
   }
 
   return shiftType === 'Morning' ? morningGroup : nightGroup;
