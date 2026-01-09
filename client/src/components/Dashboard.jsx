@@ -89,11 +89,11 @@ const Dashboard = () => {
         </div>
         <div className="flex items-center gap-3">
           <input 
+            readOnly
             type="text" 
             placeholder="Operator Name" 
-            className="border p-2 rounded-lg text-sm outline-none focus:ring-2 focus:ring-sec-blue"
+            className="border p-2 rounded-lg text-sm outline-none bg-gray-50 text-gray-500 cursor-not-allowed"
             value={operatorName}
-            onChange={(e) => setOperatorName(e.target.value)}
           />
         </div>
       </div>
