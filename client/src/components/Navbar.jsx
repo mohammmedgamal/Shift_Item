@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Menu, X, Globe, User } from 'lucide-react';
+import { Menu, X, Globe, User, LogOut } from 'lucide-react';
 
-const Navbar = ({ activeTab, setActiveTab }) => {
+const Navbar = ({ activeTab, setActiveTab, user, onLogout, canAccess }) => {
   const { t, i18n } = useTranslation();
   const isRtl = i18n.language === 'ar';
 
@@ -39,7 +39,7 @@ const Navbar = ({ activeTab, setActiveTab }) => {
                     onClick={() => setActiveTab(item.id)}
                     className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                       activeTab === item.id ? 'bg-sec-orange text-white shadow-md' : 'hover:bg-sec-orange/50'
-                    }`}
+                    } ${!canAccess(item.id) && item.id !== 'home' ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
                     {item.label}
                   </button>
@@ -55,9 +55,30 @@ const Navbar = ({ activeTab, setActiveTab }) => {
               <Globe className="w-5 h-5" />
               <span>{i18n.language === 'en' ? 'العربية' : 'English'}</span>
             </button>
-            <div className="bg-sec-orange/30 p-2 rounded-full cursor-pointer hover:bg-sec-orange transition-colors">
-              <User className="w-6 h-6" />
-            </div>
+            
+            {user ? (
+              <div className="flex items-center gap-4">
+                <div className="hidden lg:flex flex-col items-end">
+                  <span className="text-xs opacity-70">Logged in as</span>
+                  <span className="text-sm font-bold">{user.name}</span>
+                </div>
+                <button 
+                  onClick={onLogout}
+                  className="bg-red-500/20 hover:bg-red-500 p-2 rounded-full transition-colors flex items-center gap-2 px-3"
+                  title="Logout"
+                >
+                  <LogOut className="w-5 h-5" />
+                  <span className="text-sm hidden sm:inline">Logout</span>
+                </button>
+              </div>
+            ) : (
+              <button 
+                onClick={() => setActiveTab('dashboard')} // Redirect to login trigger
+                className="bg-sec-orange/30 p-2 rounded-full cursor-pointer hover:bg-sec-orange transition-colors"
+              >
+                <User className="w-6 h-6" />
+              </button>
+            )}
           </div>
         </div>
       </div>

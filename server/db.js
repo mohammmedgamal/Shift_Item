@@ -35,6 +35,15 @@ const initDb = () => {
         FOREIGN KEY (duty_id) REFERENCES duties (id)
       )`);
 
+      // Users Table
+      db.run(`CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        username TEXT UNIQUE,
+        password TEXT,
+        role TEXT DEFAULT 'operator' -- 'admin' or 'operator'
+      )`);
+
       // Settings/Meta Table
       db.run(`CREATE TABLE IF NOT EXISTS settings (
         key TEXT PRIMARY KEY,

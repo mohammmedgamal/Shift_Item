@@ -3,10 +3,21 @@ const cors = require('cors');
 const { db } = require('./db');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.use(cors());
 app.use(express.json());
+
+// Login API
+app.post('/api/login', (req, res) => {
+  const { username, password } = req.body;
+  console.log('Login attempt:', username);
+  db.get('SELECT id, name, username, role FROM users WHERE username = ? AND password = ?', [username, password], (err, user) => {
+    if (err) return res.status(500).json({ error: err.message });
+    if (!user) return res.status(401).json({ error: 'Invalid credentials' });
+    res.json(user);
+  });
+});
 
 // Get all duties with optional filters
 app.get('/api/duties', (req, res) => {

@@ -13,20 +13,20 @@ const Admin = () => {
   }, []);
 
   const fetchDuties = async () => {
-    const res = await axios.get('http://localhost:5000/api/duties');
+    const res = await axios.get('http://localhost:5001/api/duties');
     setDuties(res.data);
   };
 
   const handleAdd = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/admin/duties', newDuty);
+    await axios.post('http://localhost:5001/api/admin/duties', newDuty);
     setNewDuty({ title_en: '', title_ar: '', frequency: 'daily', shift_type: 'Morning', day_of_week: '', day_of_month: '' });
     fetchDuties();
   };
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure?')) {
-      await axios.delete(`http://localhost:5000/api/admin/duties/${id}`);
+      await axios.delete(`http://localhost:5001/api/admin/duties/${id}`);
       fetchDuties();
     }
   };

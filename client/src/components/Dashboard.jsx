@@ -10,7 +10,10 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [currentShift, setCurrentShift] = useState(getCurrentShift());
   const [activeTab, setActiveTab] = useState('daily');
-  const [operatorName, setOperatorName] = useState('');
+  const [operatorName, setOperatorName] = useState(() => {
+    const savedUser = localStorage.getItem('user');
+    return savedUser ? JSON.parse(savedUser).name : '';
+  });
 
   useEffect(() => {
     fetchTasks();
@@ -19,7 +22,7 @@ const Dashboard = () => {
   const fetchTasks = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/tasks/today', {
+      const res = await axios.get('http://localhost:5001/api/tasks/today', {
         params: {
           date: currentShift.date,
           shift_type: currentShift.type,
@@ -39,7 +42,7 @@ const Dashboard = () => {
   const handleStatusChange = async (taskId, status) => {
     const task = tasks.find(t => t.id === taskId);
     try {
-      await axios.post('http://localhost:5000/api/logs', {
+      await axios.post('http://localhost:5001/api/logs', {
         duty_id: taskId,
         date: currentShift.date,
         shift_group: currentShift.group,

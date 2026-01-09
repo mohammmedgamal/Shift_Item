@@ -11,7 +11,7 @@ const Analytics = () => {
   }, []);
 
   const fetchStats = async () => {
-    const res = await axios.get('http://localhost:5000/api/stats/completion');
+    const res = await axios.get('http://localhost:5001/api/stats/completion');
     setStats(res.data);
   };
 

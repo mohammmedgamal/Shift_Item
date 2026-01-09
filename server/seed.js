@@ -82,6 +82,32 @@ async function seed() {
   db.run(`INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)`, ['rotation_reference_date', '2024-01-01']);
   db.run(`INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)`, ['rotation_reference_shift', 'A']);
 
+  // Users Seeding
+  const insertUser = db.prepare(`INSERT OR IGNORE INTO users (name, username, password, role) VALUES (?, ?, ?, ?)`);
+  
+  // The special admin requested by user
+  insertUser.run('Admin Manager', 'admin', '23', 'admin');
+
+  const operatorUsers = [
+    { name: 'Yazeed Hazzazy', username: '86758', password: '123' },
+    { name: 'ABDULMOHSIN MOHAMMED', username: '86995', password: '123' },
+    { name: 'DHAFER MOHAMMED', username: '89034', password: '123' },
+    { name: 'AYED MOHAMMED', username: '96800', password: '123' },
+    { name: 'RASHED HAMOUD', username: '96871', password: '123' },
+    { name: 'KHALID MOHAMMED', username: '96952', password: '123' },
+    { name: 'TURKI YOUSEF', username: '81116', password: '123' },
+    { name: 'ABDULRAHMAN HAMAD', username: '81132', password: '123' },
+    { name: 'JASEM ALI', username: '89024', password: '123' },
+    { name: 'NASSER ALAWI', username: '89065', password: '123' },
+    { name: 'FALEH SALEM', username: '100941', password: '123' }
+  ];
+
+  operatorUsers.forEach(u => {
+    insertUser.run(u.name, u.username, u.password, 'operator');
+  });
+
+  insertUser.finalize();
+
   console.log('Seeding completed.');
 }
 
