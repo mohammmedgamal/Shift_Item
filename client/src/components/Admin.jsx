@@ -127,12 +127,46 @@ const Admin = () => {
               <select 
                 className="w-full border p-2 rounded-lg bg-white"
                 value={newDuty.frequency}
-                onChange={e => setNewDuty({...newDuty, frequency: e.target.value})}
+                onChange={e => setNewDuty({...newDuty, frequency: e.target.value, day_of_week: e.target.value === 'weekly' ? 'Saturday' : '', day_of_month: e.target.value === 'monthly' ? 1 : ''})}
               >
                 <option value="daily">Daily</option>
                 <option value="weekly">Weekly</option>
                 <option value="monthly">Monthly</option>
               </select>
+
+              {newDuty.frequency === 'weekly' && (
+                <div className="animate-in fade-in slide-in-from-top-2">
+                  <label className="block text-xs font-bold text-gray-500 mb-1">Select Day of Week</label>
+                  <select 
+                    className="w-full border p-2 rounded-lg bg-white"
+                    value={newDuty.day_of_week}
+                    onChange={e => setNewDuty({...newDuty, day_of_week: e.target.value})}
+                  >
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                  </select>
+                </div>
+              )}
+
+              {newDuty.frequency === 'monthly' && (
+                <div className="animate-in fade-in slide-in-from-top-2">
+                  <label className="block text-xs font-bold text-gray-500 mb-1">Select Day of Month (1-31)</label>
+                  <input 
+                    type="number"
+                    min="1"
+                    max="31"
+                    className="w-full border p-2 rounded-lg bg-white"
+                    value={newDuty.day_of_month}
+                    onChange={e => setNewDuty({...newDuty, day_of_month: parseInt(e.target.value)})}
+                  />
+                </div>
+              )}
+
               <select 
                 className="w-full border p-2 rounded-lg bg-white"
                 value={newDuty.shift_type}
@@ -154,7 +188,24 @@ const Admin = () => {
               <div key={duty.id} className="bg-white p-4 rounded-xl shadow-sm border flex justify-between items-center">
                 <div>
                   <h4 className="font-bold text-gray-800">{duty.title_en}</h4>
-                  <p className="text-gray-500 text-sm">{duty.frequency} - {duty.shift_type}</p>
+                  <div className="flex gap-2 items-center mt-1">
+                    <span className="text-[10px] uppercase font-bold bg-sec-blue/5 text-sec-blue px-2 py-0.5 rounded border border-sec-blue/10">
+                      {duty.frequency}
+                    </span>
+                    {duty.frequency === 'weekly' && (
+                      <span className="text-[10px] uppercase font-bold bg-pink-50 text-pink-600 px-2 py-0.5 rounded border border-pink-100">
+                        {duty.day_of_week}
+                      </span>
+                    )}
+                    {duty.frequency === 'monthly' && (
+                      <span className="text-[10px] uppercase font-bold bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded border border-yellow-100">
+                        Day {duty.day_of_month}
+                      </span>
+                    )}
+                    <span className="text-[10px] uppercase font-bold bg-sec-orange/5 text-sec-orange px-2 py-0.5 rounded border border-sec-orange/10">
+                      {duty.shift_type}
+                    </span>
+                  </div>
                 </div>
                 <button 
                   onClick={() => handleDelete(duty.id)}
