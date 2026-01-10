@@ -22,7 +22,7 @@ const Dashboard = () => {
   const fetchTasks = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:5001/api/tasks/today', {
+      const res = await axios.get('/api/tasks/today', {
         params: {
           date: currentShift.date,
           shift_type: currentShift.type,
@@ -42,7 +42,7 @@ const Dashboard = () => {
   const handleStatusChange = async (taskId, status) => {
     const task = tasks.find(t => t.id === taskId);
     try {
-      await axios.post('http://localhost:5001/api/logs', {
+      await axios.post('/api/logs', {
         duty_id: taskId,
         date: currentShift.date,
         shift_group: currentShift.group,

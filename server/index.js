@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const { db } = require('./db');
 
 const app = express();
@@ -7,6 +8,9 @@ const PORT = process.env.PORT || 5001;
 
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // Login API
 app.post('/api/login', (req, res) => {
@@ -136,6 +140,12 @@ app.get('/api/settings', (req, res) => {
     rows.forEach(row => settings[row.key] = row.value);
     res.json(settings);
   });
+});
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 app.listen(PORT, () => {

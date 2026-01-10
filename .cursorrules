@@ -15,10 +15,14 @@ When asked to "deploy", "push", or "update GitHub", always follow these steps:
 ## Project Structure
 - `client/`: React frontend (Vite)
 - `server/`: Node.js/Express backend
+- `package.json`: Root manager for Railway/deployment
 - `database.sqlite`: **NEVER** push this file (managed by .gitignore).
 
-## Deployment Reminders
-- Ensure the backend server is NOT running when attempting major Git operations if it locks files (though SQLite is usually the only concern).
-- Always verify that the build passes before pushing (if a build script exists).
-- If new environment variables are added, mention them but do not push `.env` files.
+## Railway Deployment Reminders
+- The root `package.json` contains a `railway-build` script for deployment.
+- Static files are served from `client/dist` by the backend.
+- Ensure the Railway project is linked to the GitHub repository.
+- Use `npm run railway-build` if manual building is needed.
+- The app uses `process.env.PORT` provided by Railway.
+
 

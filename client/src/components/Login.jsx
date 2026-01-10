@@ -15,7 +15,7 @@ const Login = ({ onLogin }) => {
     setError('');
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5001/api/login', { username, password });
+      const res = await axios.post('/api/login', { username, password });
       onLogin(res.data);
     } catch (err) {
       setError(err.response?.data?.error || 'Login failed. Please check your credentials.');
