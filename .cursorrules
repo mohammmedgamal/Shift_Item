@@ -19,10 +19,10 @@ When asked to "deploy", "push", or "update GitHub", always follow these steps:
 - `database.sqlite`: **NEVER** push this file (managed by .gitignore).
 
 ## Railway Deployment Reminders
-- The root `package.json` contains a `railway-build` script for deployment.
+- The root `package.json` contains a `build` script that handles installing both client and server dependencies.
 - Static files are served from `client/dist` by the backend.
 - Ensure the Railway project is linked to the GitHub repository.
-- Use `npm run railway-build` if manual building is needed.
 - The app uses `process.env.PORT` provided by Railway.
+
 
 
