@@ -49,97 +49,126 @@ const ShiftBoard = () => {
         </div>
 
         {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          
-          {/* Daily Section */}
-          <Section title="Daily Shift Items" color="bg-yellow-400">
-            <div className="flex flex-col gap-4">
-              <div>
-                <div className="text-[10px] font-bold text-gray-400 mb-1">MORNING</div>
-                <div className="grid gap-1">
-                  <Item>Travel Screen Rotation</Item>
-                  <Item>Air Compressor Drain Test</Item>
-                  <Item>29-Intake Hypo Dosing</Item>
-                  <Item>31-Check AVR Room</Item>
-                  <Item>22-Boiler Sootblowers</Item>
-                  <Item>Vent & Refill H2 Units 3 & 4</Item>
+        <div className="flex flex-col gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Daily Section */}
+            <Section title="Daily Shift Items" color="bg-yellow-400">
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="flex-1">
+                  <div className="text-[10px] font-bold text-gray-400 mb-1">MORNING</div>
+                  <div className="grid gap-1">
+                    <Item>Travel Screen Rotation</Item>
+                    <Item>Air Compressor Drain Test</Item>
+                    <Item>29-Intake Hypo Dosing</Item>
+                    <Item>31-Check AVR Room</Item>
+                    <Item>22-Boiler Sootblowers</Item>
+                    <Item>Vent & Refill H2 Units 3 & 4</Item>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="text-[10px] font-bold text-gray-400 mb-1 uppercase">Night</div>
+                  <div className="grid gap-1">
+                    <Item isNight>Travel Screen Rotation</Item>
+                    <Item isNight>31-Check AVR Room</Item>
+                    <Item isNight>Vent & Refill H2 Units 1 & 2</Item>
+                  </div>
                 </div>
               </div>
-              <div>
-                <div className="text-[10px] font-bold text-gray-400 mb-1 uppercase">Night</div>
-                <div className="grid gap-1">
-                  <Item isNight>Travel Screen Rotation</Item>
-                  <Item isNight>31-Check AVR Room</Item>
-                  <Item isNight>Vent & Refill H2 Units 1 & 2</Item>
-                </div>
-              </div>
-            </div>
-          </Section>
+            </Section>
 
-          {/* Weekly Section */}
+            {/* Monthly Section */}
+            <Section title="Monthly Shift Items" color="bg-yellow-500">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="bg-yellow-50 p-2 rounded border border-yellow-200">
+                  <div className="text-[9px] font-bold text-yellow-700 uppercase">1st Day of Month</div>
+                  <div className="text-[10px]">23-Draining WTR From Oil Tanks & Check Fuel/Lube Ullage</div>
+                </div>
+                <div className="bg-blue-50 p-2 rounded border border-blue-200">
+                  <div className="text-[9px] font-bold text-blue-700 uppercase">1st Saturday</div>
+                  <div className="text-[10px]">16- Steam Trap Inspection & Clean Unit Trenches</div>
+                </div>
+                <div className="bg-orange-50 p-2 rounded border border-orange-200">
+                  <div className="text-[9px] font-bold text-orange-700 uppercase">1st Monday</div>
+                  <div className="text-[10px]">Start Seal Air Fan / 9- Boiler & Turbine Drain Valve</div>
+                </div>
+                <div className="bg-green-50 p-2 rounded border border-green-200">
+                  <div className="text-[9px] font-bold text-green-700 uppercase">1st Tuesday</div>
+                  <div className="text-[10px]">20-Run SBFP U12 / 32-Issue Notification for Motor Megger</div>
+                </div>
+                <div className="bg-purple-50 p-2 rounded border border-purple-200">
+                  <div className="text-[9px] font-bold text-purple-700 uppercase">1st Wednesday</div>
+                  <div className="text-[10px]">Rotate Cooling/Service/Seal Water P/P & SCAH Cond P/P</div>
+                </div>
+                <div className="bg-red-50 p-2 rounded border border-red-200">
+                  <div className="text-[9px] font-bold text-red-700 uppercase">1st Week</div>
+                  <div className="text-[10px]">38-Fuel Area Fire Monitor Inspection</div>
+                </div>
+              </div>
+            </Section>
+          </div>
+
+          {/* Weekly Section - Full Width */}
           <Section title="Weekly Shift Items" color="bg-pink-400">
-            <div className="grid grid-cols-2 gap-2">
-              <div className="flex flex-col gap-1">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2 overflow-x-auto min-w-full">
+              <div className="flex flex-col gap-1 min-w-[100px]">
                 <div className="text-[10px] font-black text-sec-blue opacity-40 border-b mb-1">SAT</div>
                 <Item>(19) Walk Down Building</Item>
                 <Item>(39) Vehicle Inspection</Item>
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 min-w-[100px]">
                 <div className="text-[10px] font-black text-sec-blue opacity-40 border-b mb-1">SUN</div>
                 <Item>(18) MBFPT Governor</Item>
                 <Item>Swap Air Compressors</Item>
                 <Item>(4) Test MBFP DC</Item>
                 <Item isNight>(3) EHC Accumulators</Item>
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 min-w-[100px]">
                 <div className="text-[10px] font-black text-sec-blue opacity-40 border-b mb-1">MON</div>
                 <Item>(01) EHC Pumps Test</Item>
                 <Item>(17) Test MT AC Lub Oil</Item>
                 <Item>(21) Fire Alarm Test</Item>
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 min-w-[100px]">
                 <div className="text-[10px] font-black text-sec-blue opacity-40 border-b mb-1">TUE</div>
                 <Item>(02) EDG Black Out Test</Item>
                 <Item>(02) Test Run EDG</Item>
                 <Item isNight>(5) Test Sump Pits</Item>
               </div>
+              <div className="flex flex-col gap-1 min-w-[100px]">
+                <div className="text-[10px] font-black text-sec-blue opacity-40 border-b mb-1">WED</div>
+                <Item>(27) Rotate Joky Pump</Item>
+                <Item>(M) Test Run EDG</Item>
+              </div>
+              <div className="flex flex-col gap-1 min-w-[100px]">
+                <div className="text-[10px] font-black text-sec-blue opacity-40 border-b mb-1">THU</div>
+                <Item>(26) Test Fuel Oil</Item>
+                <Item>(12) Check Fire Fighting</Item>
+                <Item>(35) Oil Gun Inspection</Item>
+                <Item isNight>(25) Liquid Detector</Item>
+                <Item isNight>(13) Action Plan Review</Item>
+              </div>
+              <div className="flex flex-col gap-1 min-w-[100px]">
+                <div className="text-[10px] font-black text-sec-blue opacity-40 border-b mb-1">FRI</div>
+                <Item>(22) Soot Blowing Test</Item>
+                <Item isNight>(28) Walkdown Assigned Area</Item>
+              </div>
             </div>
           </Section>
 
-          {/* Monthly Section */}
-          <Section title="Monthly Shift Items" color="bg-yellow-500">
-            <div className="flex flex-col gap-3">
-              <div className="bg-yellow-50 p-2 rounded border border-yellow-200">
-                <div className="text-[9px] font-bold text-yellow-700 uppercase">1st Day</div>
-                <div className="text-[10px]">23-Draining WTR From Oil Tanks</div>
-              </div>
-              <div className="bg-blue-50 p-2 rounded border border-blue-200">
-                <div className="text-[9px] font-bold text-blue-700 uppercase">1st Sat/Mon</div>
-                <div className="text-[10px]">16-Steam Trap / Seal Air Fan</div>
-              </div>
-              <div className="bg-green-50 p-2 rounded border border-green-200">
-                <div className="text-[9px] font-bold text-green-700 uppercase">1st Tue/Wed</div>
-                <div className="text-[10px]">20-SBFP / 11-Cooling Water P/P</div>
-              </div>
-            </div>
-          </Section>
-
-          {/* Quarterly & Specialized */}
-          <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Section title="Quaterly Shift Items" color="bg-orange-400">
-              <div className="flex flex-col gap-1">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                 <Item isBoth>1st Fri: 8-PIV Inspection</Item>
                 <Item isBoth>2nd Fri: Hanger Inspection</Item>
                 <Item isBoth>1st Week: Fire Monitor</Item>
               </div>
             </Section>
             <Section title="Operational Tests" color="bg-sec-blue">
-              <div className="bg-sec-blue/10 p-4 rounded text-center font-bold text-sec-blue text-xs">
+              <div className="bg-sec-blue/10 p-4 rounded text-center font-bold text-sec-blue text-xs flex items-center justify-center">
                 Hypo Acid Cleaning Report
               </div>
             </Section>
           </div>
-
         </div>
 
         {/* Bottom Status Blocks */}
