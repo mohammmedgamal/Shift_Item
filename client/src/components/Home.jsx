@@ -23,20 +23,6 @@ const Home = ({ settings }) => {
 
       {/* Managers' Words */}
       <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 w-full">
-        <div className="bg-white p-8 rounded-xl shadow-md border-t-4 border-sec-blue relative overflow-hidden flex flex-col md:flex-row items-center gap-6">
-          <div className="flex-shrink-0">
-            <img 
-              src="/operations-manager.jpg" 
-              alt="Operations Manager" 
-              className="w-32 h-32 rounded-full object-cover border-4 border-sec-blue/20"
-            />
-          </div>
-          <div>
-            <Quote className="absolute -top-4 -right-4 w-24 h-24 text-sec-blue/5" />
-            <h3 className="text-xl font-bold text-sec-blue mb-4">{t('manager_word')}</h3>
-            <p className="text-gray-700 italic">"{settings.operations_manager_word}"</p>
-          </div>
-        </div>
         <div className="bg-white p-8 rounded-xl shadow-md border-t-4 border-sec-lightBlue relative overflow-hidden flex flex-col md:flex-row items-center gap-6">
           <div className="flex-shrink-0">
             <img 
@@ -49,6 +35,20 @@ const Home = ({ settings }) => {
             <Quote className="absolute -top-4 -right-4 w-24 h-24 text-sec-lightBlue/5" />
             <h3 className="text-xl font-bold text-sec-blue mb-4">{t('plant_manager_word')}</h3>
             <p className="text-gray-700 italic">"{settings.power_plant_manager_word}"</p>
+          </div>
+        </div>
+        <div className="bg-white p-8 rounded-xl shadow-md border-t-4 border-sec-blue relative overflow-hidden flex flex-col md:flex-row items-center gap-6">
+          <div className="flex-shrink-0">
+            <img 
+              src="/operations-manager.jpg" 
+              alt="Operations Manager" 
+              className="w-32 h-32 rounded-full object-cover border-4 border-sec-blue/20"
+            />
+          </div>
+          <div>
+            <Quote className="absolute -top-4 -right-4 w-24 h-24 text-sec-blue/5" />
+            <h3 className="text-xl font-bold text-sec-blue mb-4">{t('manager_word')}</h3>
+            <p className="text-gray-700 italic">"{settings.operations_manager_word}"</p>
           </div>
         </div>
       </div>
