@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { getCurrentShift } from '../utils/shiftRotation';
-import { CheckCircle, Clock, AlertCircle, HelpCircle, Save } from 'lucide-react';
+import { CheckCircle, Clock, AlertCircle, HelpCircle, Save, LayoutGrid } from 'lucide-react';
+import ShiftBoard from './ShiftBoard';
 
 const Dashboard = () => {
   const { t, i18n } = useTranslation();
@@ -100,24 +101,27 @@ const Dashboard = () => {
 
       {/* Tabs */}
       <div className="flex gap-4 mb-6 overflow-x-auto pb-2">
-        {['daily', 'weekly', 'monthly'].map(tab => (
+        {['daily', 'weekly', 'monthly', 'board'].map(tab => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-6 py-2 rounded-xl font-medium transition-all ${
+            className={`px-6 py-2 rounded-xl font-medium transition-all flex items-center gap-2 whitespace-nowrap ${
               activeTab === tab 
                 ? 'bg-sec-orange text-white shadow-md transform scale-105' 
                 : 'bg-white text-gray-500 hover:bg-sec-gray'
             }`}
           >
-            {t(tab)}
+            {tab === 'board' && <LayoutGrid className="w-4 h-4" />}
+            {tab === 'board' ? 'Master Schedule' : t(tab)}
           </button>
         ))}
       </div>
 
-      {/* Task List */}
+      {/* Task List or Board */}
       <div className="grid gap-4">
-        {loading ? (
+        {activeTab === 'board' ? (
+          <ShiftBoard />
+        ) : loading ? (
           <div className="text-center py-20 text-gray-400">Loading tasks...</div>
         ) : tasks.length === 0 ? (
           <div className="text-center py-20 text-gray-400 bg-white rounded-2xl border-2 border-dashed">No duties assigned for this shift</div>
